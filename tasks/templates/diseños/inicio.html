@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Bienvenido a Tu Gestor de Tareas</h1>
+    <p>Aqui puede gestionar todas tus tareas pendientes. Navega por las opciones siguientes: </p>
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">inicio</a>
+            </li>
+            <li>
+                <a href="{% url 'list_tasks' %}">Ir a la lista de tareas</a>
+            </li>
+            <li>
+                <a href="{% url 'create_task' %}">Crear Tareas</a>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src="{% static 'scripts.js' %}"></script>
+</body>
+</html>
+    
+

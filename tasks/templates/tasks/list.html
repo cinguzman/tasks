@@ -1,0 +1,42 @@
+{% extends 'diseños/inicio.html' %}
+
+{% block content %}
+<h1>Lista de Tareas</h1>
+<ul>
+    {% for task in tasks %}
+        <li>
+            <h3>
+                {% if task.terminado %}
+                    ✅ {{ task.titulo }} (Completado)
+                {% else %}
+                    🕐 {{ task.titulo }} (Pendiente)
+                {% endif %}
+        </h3>
+        <p>{{ task.descripcion }}</p>
+            <button class="btn btn-primary" 
+            data-delete-url="{% url 'edit_task' task.id %}"
+            onclick="if(confirm('¿Estás seguro de editar esta tarea? ')) {
+                        window.location.href = this.getAttribute('data-delete-url');
+                    }">
+                <i class="fas fa-trash"></i> Editar
+            </button>
+            <button class="btn btn-danger" 
+            data-delete-url="{% url 'delete_task' task.id %}"
+            onclick="if(confirm('¿Estás seguro de eliminar esta tarea? ')) {
+                        window.location.href = this.getAttribute('data-delete-url');
+                    }">
+                <i class="fas fa-trash"></i> Eliminar
+            </button>
+
+            {% if not task.terminado %}
+                <form action="{% url 'complete_task' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Marcar como completada</button>
+                </form>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_task' %}">Crear nueva tarea</a>
+
+{% endblock %}

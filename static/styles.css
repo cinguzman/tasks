@@ -1,0 +1,41 @@
+body {
+    background-color: pink;
+}
+
+.navbar {
+    background-color: grey;
+    padding: 20px 10px;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar ul li {
+    list-style: none;
+}
+
+.navbar ul li a {
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.navbar ul li a:hover {
+    color: palevioletred;
+}
+
+.container {
+    max-width: 1200px;
+    background: antiquewhite;
+    margin: auto;
+    padding: 20px 10px;
+}
+
+.input {
+    background: rgb(211, 211, 211);
+    padding: 10px;
+    text-align: center;
+    display: block;
+}
+

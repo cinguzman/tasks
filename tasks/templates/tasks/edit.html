@@ -1,0 +1,18 @@
+{% extends 'diseños/inicio.html' %}
+
+{% block content %}
+<h1>Editar Tarea</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="title">Título:</label>
+    <input type="text" name="title" value="{{ task.title }}" required><br>
+    <label for="description">Descripción:</label>
+    <textarea name="description" required>{{ task.description }}</textarea><br>
+    <div>
+        <label for="terminado">¿Completada?</label>
+        <input type="checkbox" id="terminado" name="terminado" {% if task.terminado %}checked{% endif %}>
+    </div>
+    <button type="submit">Guardar cambios</button>
+</form>
+
+{% endblock %}
