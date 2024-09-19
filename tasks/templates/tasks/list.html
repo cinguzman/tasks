@@ -6,13 +6,14 @@
     {% for task in tasks %}
         <li>
             <h3>
-                {% if task.terminado %}
+                {% if task.done %}
                     ✅ {{ task.titulo }} (Completado)
                 {% else %}
                     🕐 {{ task.titulo }} (Pendiente)
                 {% endif %}
-        </h3>
-        <p>{{ task.descripcion }}</p>
+            </h3>
+            <p>{{ task.descripcion }}</p>
+
             <button class="btn btn-primary" 
             data-delete-url="{% url 'edit_task' task.id %}"
             onclick="if(confirm('¿Estás seguro de editar esta tarea? ')) {
@@ -20,6 +21,7 @@
                     }">
                 <i class="fas fa-trash"></i> Editar
             </button>
+
             <button class="btn btn-danger" 
             data-delete-url="{% url 'delete_task' task.id %}"
             onclick="if(confirm('¿Estás seguro de eliminar esta tarea? ')) {

@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from .forms import CreateNewTask
@@ -35,6 +34,6 @@ def delete_task(request, task_id):
 
 def complete_task(request, task_id):
     tarea = get_object_or_404(Task, id=task_id)
-    tarea.terminado = True
+    tarea.done = True
     tarea.save()
     return redirect('list_tasks')
